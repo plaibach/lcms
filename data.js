@@ -306,6 +306,10 @@ var fieldsInventory = [{
 	valueField:   'Primary_Use', 
 	triggerAction: 'all',
 	tpl: '<tpl for="."><div ext:qtip="{Primary_Use}" class="x-combo-list-item">{Primary_Use}</div></tpl>'
+	// urpl testing begin
+	// validator:  function (str) {
+	// 	return (str.length == 0 || str.length <= 24);
+	// urpl testing end
 },{
 	fieldLabel: 'HRS Code',
 	width:      100,
@@ -522,6 +526,10 @@ var fieldsInventoryAdmin = [{
 	valueField:   'Primary_Use', 
 	triggerAction: 'all',
 	tpl: '<tpl for="."><div ext:qtip="{Primary_Use}" class="x-combo-list-item">{Primary_Use}</div></tpl>'
+	// urpl testing begin
+	// validator:  function (str) {
+	// 	return (str.length == 0 || str.length <= 24);
+	// urpl testing end
 },{
 	fieldLabel: 'HRS Code',
 	width:      100,
@@ -1689,11 +1697,18 @@ Ext.apply(Ext.form.VTypes, {
 		return value.match(/^[A-Fa-f0-9]{12}$/);
 	},
 	MACText: 'The MAC must be 0-9, A-F, 12 characters',
-
+	
 	CSR: function (value, field) {
 		return ((value.startsWith('H') && value.length == 7) || value == 'N/A');
 	},
 	CSRText: 'The CSR field may be "N/A" or be a valid CSR reference number (HE#####)',
+	
+	// urpl testing begin
+	primaryUse: function (value, field) {
+		return value.length >= 2;
+	},
+	primaryUseText: 'You must specify a primary use',
+	// urpl testing end
 	
 	firstName: function (value, field) {
 		return value.length >= 2;
@@ -1741,19 +1756,6 @@ var fieldDeployments = [{
 	triggerAction: 'all',
 	tpl: '<tpl for="."><div ext:qtip="{UserName}" class="x-combo-list-item">{UserName} </div></tpl>'
 },{
-	fieldLabel:    'Primary Use', 
-	width:         200, 
-	name:          'Primary_Use', 
-	readOnly:      true,
-	value:         'Staff', // default
-	xtype:         'combo',
-	store:         storePrimaryUse,
-	mode:          'remote',
-	displayField:  'Primary_Use',
-	valueField:    'Primary_Use', 
-	triggerAction: 'all',
-	tpl: '<tpl for="."><div ext:qtip="{Primary_Use}" class="x-combo-list-item">{Primary_Use}</div></tpl>'
-},{
 	fieldLabel: 'Deploy Date', 
 	width:      200, 
 	name:       'Effective_Date',
@@ -1761,6 +1763,21 @@ var fieldDeployments = [{
 	readOnly:   true,
 	xtype:      'datefield',
 	format:     'Y-m-d'
+},{
+	fieldLabel:    'Primary Use', 
+	width:         200, 
+	name:          'Primary_Use', 
+	readOnly:      true,
+	store:         storePrimaryUse,
+	xtype:         'combo',
+	mode:          'remote',
+	displayField:  'Primary_Use',
+	valueField:    'Primary_Use', 
+	triggerAction: 'all',
+	tpl: '<tpl for="."><div ext:qtip="{Primary_Use}" class="x-combo-list-item">{Primary_Use}</div></tpl>'
+	// urpl testing
+	// vtype:        'primaryUse',
+	// allowBlank:    false
 },{
 	fieldLabel: 'First Name', 
 	width:      200,
