@@ -308,8 +308,9 @@ var fieldsInventory = [{
 	tpl: '<tpl for="."><div ext:qtip="{Primary_Use}" class="x-combo-list-item">{Primary_Use}</div></tpl>'
 	// urpl testing begin
 	// validator:  function (str) {
-	// 	return (str.length == 0 || str.length <= 24);
-	// urpl testing end
+	// 	return (str.length == 0 || str.length <= 25);
+	// }
+	//urpl testing end
 },{
 	fieldLabel: 'HRS Code',
 	width:      100,
@@ -528,7 +529,8 @@ var fieldsInventoryAdmin = [{
 	tpl: '<tpl for="."><div ext:qtip="{Primary_Use}" class="x-combo-list-item">{Primary_Use}</div></tpl>'
 	// urpl testing begin
 	// validator:  function (str) {
-	// 	return (str.length == 0 || str.length <= 24);
+	// 	return (str.length == 0 || str.length <= 25);
+	// }
 	// urpl testing end
 },{
 	fieldLabel: 'HRS Code',
@@ -1775,9 +1777,10 @@ var fieldDeployments = [{
 	valueField:    'Primary_Use', 
 	triggerAction: 'all',
 	tpl: '<tpl for="."><div ext:qtip="{Primary_Use}" class="x-combo-list-item">{Primary_Use}</div></tpl>'
-	// urpl testing
+	// urpl testing begin
 	// vtype:        'primaryUse',
 	// allowBlank:    false
+	// urpl testing end
 },{
 	fieldLabel: 'First Name', 
 	width:      200,
