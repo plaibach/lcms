@@ -6,7 +6,7 @@ var storeUsers = new Ext.data.JsonStore({
 	root:       'results',
 	idProperty: 'UserName',
 	fields: ['UserName', 'Admin'],
-	
+
 	baseParams: {
 		table: 'Users'
 	}
